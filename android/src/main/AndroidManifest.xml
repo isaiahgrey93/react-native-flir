@@ -1,4 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.flir">
+    <!-- FLIR SDK PERMISSIONS - START -->
+    <!-- Initialize SDK, open, edit, save files -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- FLIR SDK PERMISSIONS - END -->
 
+    <!-- FLIR SDK FEATURES - START -->
+    <!-- Enable USB OTG Cameras (Flir One) -->
+    <uses-feature android:name="android.hardware.usb.host" android:required="true" />
 </manifest>
+
+

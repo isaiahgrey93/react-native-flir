@@ -8,15 +8,37 @@ Flir SDK module for React Native
 npm install react-native-flir
 ```
 
+## Native Setup
+
+### Android Configuration
+
+1. Update `minSdkVersion` to `28` inside `android/build.gradle` file.
+
+```gradle
+buildscript {
+    ext {
+        minSdkVersion = 28
+    }
+}
+```
+
+2. Update `packagingOptions` inside `android/app/build.gradle` file.
+
+```gradle
+android {
+    packagingOptions {
+        pickFirst 'lib/**/*.so'
+    }
+}
+```
+
 ## Usage
 
 ```js
-import { multiply } from 'react-native-flir';
 
-// ...
-
-const result = await multiply(3, 7);
 ```
+
+## API
 
 ## Contributing
 

@@ -63,6 +63,13 @@ android {
       }
     }
   }
+
+  packagingOptions {
+      pickFirst 'lib/x86/libc++_shared.so'
+      pickFirst 'lib/x86_64/libc++_shared.so'
+      pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+      pickFirst 'lib/arm64-v8a/libc++_shared.so'
+  }
 }
 
 repositories {
@@ -72,10 +79,13 @@ repositories {
 
 
 dependencies {
-  // For < 0.71, this will be from the local maven repo
+
+    // For < 0.71, this will be from the local maven repo
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
-  implementation "com.facebook.react:react-native"
+  implementation "com.facebook.react:react-native:+"
+
+  implementation fileTree(dir: 'flirsdk', include: ['*.aar', '*.jar'], exclude: [])
 }
 
 if (isNewArchitectureEnabled()) {

@@ -4,6 +4,14 @@ Contributions are always welcome, no matter how large or small!
 
 We want this community to be friendly and respectful to each other. Please follow it in all your interactions with the project. Before contributing, please read the [code of conduct](./CODE_OF_CONDUCT.md).
 
+## Requirements
+
+Git LFS - https://git-lfs.com/
+
+```sh
+brew install git-lfs
+```
+
 ## Development workflow
 
 To get started with the project, run `yarn` in the root directory to install the required dependencies for each package:
@@ -85,7 +93,6 @@ yarn test
 To edit the Objective-C or Swift files, open `example/ios/FlirExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-flir`.
 
 To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `react-native-flir` under `Android`.
-
 
 ### Commit message convention
 
