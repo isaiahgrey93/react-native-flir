@@ -12,10 +12,6 @@ if (os.type() === 'Windows_NT') {
   options.shell = true;
 }
 
-// Fetch Flir SDK Files from GIT LFS
-console.log(`\nFetching FLIR SDK files from GIT LFS...`);
-child_process.spawnSync('git', ['lfs fetch'], options);
-
 // Install FLIR SDK for Android - START
 console.log(`\nInstalling FLIR SDK for Android...`);
 
