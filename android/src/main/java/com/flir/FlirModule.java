@@ -48,16 +48,6 @@ public class FlirModule extends FlirSpec {
   }
 
   @ReactMethod(isBlockingSynchronousMethod = true)
-  public String getVersion() {
-    return properties.getVersion();
-  }
-
-  @ReactMethod(isBlockingSynchronousMethod = true)
-  public String getCommitHash() {
-    return properties.getCommitHash();
-  }
-
-  @ReactMethod(isBlockingSynchronousMethod = true)
   public boolean isConnected() {
     return deviceManager.isConnected();
   }

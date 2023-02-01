@@ -32,9 +32,7 @@ RCT_EXPORT_MODULE(RCTFlirCameraView)
 }
 
 
-- (void)onImageReceived {
-//    TODO implement ON_STREAM event emitter
-    
+- (void)onImageReceived {    
     dispatch_async(renderer, ^{
         NSError* error;
         

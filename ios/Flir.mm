@@ -49,8 +49,7 @@ RCT_EXPORT_MODULE()
          @"ON_SCANNER_DEVICE_LOST": @"ON_SCANNER_DEVICE_LOST",
          @"ON_SCANNER_ERROR": @"ON_SCANNER_ERROR",
          @"ON_DEVICE_CONNECT": @"ON_DEVICE_CONNECT",
-         @"ON_DEVICE_DISCONNECT": @"ON_DEVICE_DISCONNECT",
-         @"ON_STREAM": @"ON_STREAM"
+         @"ON_DEVICE_DISCONNECT": @"ON_DEVICE_DISCONNECT"
      }
 };
 }
@@ -61,8 +60,7 @@ RCT_EXPORT_MODULE()
     @"ON_SCANNER_DEVICE_LOST",
     @"ON_SCANNER_ERROR",
     @"ON_DEVICE_CONNECT",
-    @"ON_DEVICE_DISCONNECT",
-    @"ON_STREAM"
+    @"ON_DEVICE_DISCONNECT"
   ];
 }
 
@@ -94,16 +92,6 @@ RCT_EXPORT_MODULE()
 - (void)onDisconnected:(FLIRCamera * _Nonnull)camera withError:(nullable NSError *)error {
     [self sendEventWithName:@"ON_DEVICE_DISCONNECT" event:camera.getIdentity.deviceId];
 }
-
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getVersion) {
-    return @"0.0.1";
-}
-
-
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getCommitHash) {
-    return @"123456789abcdefghijklmnop";
-}
-
 
 RCT_EXPORT_METHOD(startScanningForDevices) {
     [discovery start:FLIRCommunicationInterfaceEmulator | FLIRCommunicationInterfaceLightning];

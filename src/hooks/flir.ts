@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
 
-import { getDeviceManager } from '../lib';
+import { getFlir } from '../lib';
 
-const useDeviceManager = () => {
-  const { current: dm } = useRef(getDeviceManager());
+const useFlir = (): UseFlir => {
+  const { current: flir } = useRef(getFlir());
 
   const device = useDetectedDevice();
   const scanning = useIsScanningForDevice();
@@ -12,32 +12,31 @@ const useDeviceManager = () => {
   const fps = useFPS();
 
   return {
-    start: dm.start,
-    stop: dm.stop,
-    connect: dm.connect,
-    disconnect: dm.disconnect,
     fps,
     streaming,
     scanning,
     connected,
     device,
-    onDeviceFound: dm.onDeviceFound,
-    onDeviceLost: dm.onDeviceLost,
-    onDeviceScanError: dm.onDeviceScanError,
-    onDeviceConnected: dm.onDeviceConnected,
-    onDeviceDisconnected: dm.onDeviceDisconnected,
-    onStream: dm.onStream,
+    start: flir.start,
+    stop: flir.stop,
+    connect: flir.connect,
+    disconnect: flir.disconnect,
+    onDeviceFound: flir.onDeviceFound,
+    onDeviceLost: flir.onDeviceLost,
+    onDeviceScanError: flir.onDeviceScanError,
+    onDeviceConnected: flir.onDeviceConnected,
+    onDeviceDisconnected: flir.onDeviceDisconnected,
   };
 };
 
 const useFPS = (interval: number = 1000) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
-  const [fps, setFPS] = useState(dm.fps);
+  const [fps, setFPS] = useState(flir.fps);
 
   useEffect(() => {
     const subscription = setInterval(() => {
-      setFPS(dm.fps);
+      setFPS(flir.fps);
     }, interval);
 
     return () => {
@@ -49,13 +48,13 @@ const useFPS = (interval: number = 1000) => {
 };
 
 const useIsStreaming = (interval: number = 1000) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
-  const [streaming, setStreaming] = useState(dm.streaming);
+  const [streaming, setStreaming] = useState(flir.streaming);
 
   useEffect(() => {
     const subscription = setInterval(() => {
-      setStreaming(dm.streaming);
+      setStreaming(flir.streaming);
     }, interval);
 
     return () => {
@@ -67,13 +66,13 @@ const useIsStreaming = (interval: number = 1000) => {
 };
 
 const useIsScanningForDevice = (interval: number = 1000) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
-  const [scanning, setScanning] = useState(dm.scanning);
+  const [scanning, setScanning] = useState(flir.scanning);
 
   useEffect(() => {
     const subscription = setInterval(() => {
-      setScanning(dm.scanning);
+      setScanning(flir.scanning);
     }, interval);
 
     return () => {
@@ -85,13 +84,13 @@ const useIsScanningForDevice = (interval: number = 1000) => {
 };
 
 const useIsConnectedToDevice = (interval: number = 1000) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
-  const [connected, setConnected] = useState(dm.connected);
+  const [connected, setConnected] = useState(flir.connected);
 
   useEffect(() => {
     const subscription = setInterval(() => {
-      setConnected(dm.connected);
+      setConnected(flir.connected);
     }, interval);
 
     return () => {
@@ -112,10 +111,10 @@ const useDetectedDevice = () => {
 };
 
 const useOnDeviceFound = (callback: (id: string) => void) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
   useEffect(() => {
-    const listener = dm.onDeviceFound(callback);
+    const listener = flir.onDeviceFound(callback);
 
     return () => {
       listener.remove();
@@ -124,10 +123,10 @@ const useOnDeviceFound = (callback: (id: string) => void) => {
 };
 
 const useOnDeviceLost = (callback: (id: string) => void) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
   useEffect(() => {
-    const listener = dm.onDeviceLost(callback);
+    const listener = flir.onDeviceLost(callback);
 
     return () => {
       listener.remove();
@@ -136,10 +135,10 @@ const useOnDeviceLost = (callback: (id: string) => void) => {
 };
 
 const useOnDeviceScanError = (callback: (error: string) => void) => {
-  const { current: dm } = useRef(getDeviceManager());
+  const { current: flir } = useRef(getFlir());
 
   useEffect(() => {
-    const listener = dm.onDeviceScanError(callback);
+    const listener = flir.onDeviceScanError(callback);
 
     return () => {
       listener.remove();
@@ -148,7 +147,10 @@ const useOnDeviceScanError = (callback: (error: string) => void) => {
 };
 
 export {
-  useDeviceManager,
+  useFlir,
+  useFPS,
+  useIsStreaming,
+  useIsConnectedToDevice,
   useIsScanningForDevice,
   useDetectedDevice,
   useOnDeviceFound,

@@ -8,7 +8,6 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-
 import javax.annotation.Nullable;
 
 public class FlirCameraViewManager extends SimpleViewManager<ImageView> {
@@ -30,8 +29,6 @@ public class FlirCameraViewManager extends SimpleViewManager<ImageView> {
   @Override
   public ImageView createViewInstance(ThemedReactContext __) {
     view = new ImageView(context);
-
-    view.setBackgroundColor(0xFF000000);
 
     return view;
   }

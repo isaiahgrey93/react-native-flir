@@ -1,6 +1,6 @@
 type EventCallback<S extends any> = (value: S) => void;
 
-interface DeviceScanner {
+interface Flir {
   scanning: boolean;
   connected: boolean;
   streaming: boolean;
@@ -18,7 +18,10 @@ interface DeviceScanner {
   onDeviceDisconnected: (
     callback: (deviceId: string) => void
   ) => EmitterSubscription;
-  onStream: (callback: (stream: string) => void) => EmitterSubscription;
+}
+
+interface UseFlir extends Flir {
+  device: string | null;
 }
 
 interface Constants {
@@ -28,6 +31,5 @@ interface Constants {
     ON_SCANNER_ERROR: string;
     ON_DEVICE_CONNECT: string;
     ON_DEVICE_DISCONNECT: string;
-    ON_STREAM: string;
   };
 }

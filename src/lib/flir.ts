@@ -6,12 +6,11 @@ import {
   ON_SCANNER_ERROR,
   ON_DEVICE_CONNECT,
   ON_DEVICE_DISCONNECT,
-  ON_STREAM,
 } from './constants';
 
-import { emitter } from './event-emitter';
+import { emitter } from './events';
 
-function getDeviceManager(): DeviceScanner {
+function getFlir(): Flir {
   return {
     get scanning() {
       return Flir.isScanningForDevices();
@@ -50,10 +49,7 @@ function getDeviceManager(): DeviceScanner {
     ) {
       return emitter.addListener(ON_DEVICE_DISCONNECT, callback);
     },
-    onStream: function onStream(callback: EventCallback<string>) {
-      return emitter.addListener(ON_STREAM, callback);
-    },
   };
 }
 
-export { getDeviceManager };
+export { getFlir };

@@ -2,13 +2,14 @@ import { NativeModules, Platform, TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 
 export interface Spec extends TurboModule {
-  connect(): void;
-  disconnect(): void;
-  getVersion(): string;
-  getCommitHash(): string;
-  startScanningForDevices(): void;
-  stopScanningForDevices(): void;
-  isScanningForDevices(): any;
+  isScanningForDevices(): boolean;
+  isConnected(): boolean;
+  isStreaming(): boolean;
+  getFrameRate(): number;
+  connect: () => void;
+  disconnect: () => void;
+  startScanningForDevices: () => void;
+  stopScanningForDevices: () => void;
 }
 
 const LINKING_ERROR =

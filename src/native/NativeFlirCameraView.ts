@@ -8,7 +8,7 @@ const LINKING_ERROR =
 
 const NativeFlirCameraView = requireNativeComponent('RCTFlirCameraView');
 
-const FlirCameraView = NativeFlirCameraView
+const RCTFlirCameraView = NativeFlirCameraView
   ? NativeFlirCameraView
   : new Proxy(
       {},
@@ -18,5 +18,15 @@ const FlirCameraView = NativeFlirCameraView
         },
       }
     );
+
+interface FlirCameraViewProps {
+  stream: boolean;
+  thermal: boolean;
+  width: number;
+  height: number;
+}
+
+const FlirCameraView =
+  RCTFlirCameraView as React.ComponentType<FlirCameraViewProps>;
 
 export { FlirCameraView };
