@@ -9,11 +9,7 @@ import {
   Switch,
 } from 'react-native';
 
-import {
-  useSDKInfo,
-  useDeviceManager,
-  FlirCameraView,
-} from 'react-native-flir';
+import { useSDKInfo, useDeviceManager, FlirCameraView } from '../../src';
 
 export default function App() {
   const [active, setActive] = React.useState(false);

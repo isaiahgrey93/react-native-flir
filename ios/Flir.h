@@ -1,12 +1,12 @@
-
-#ifdef RCT_NEW_ARCH_ENABLED
-#import "RNFlirSpec.h"
-
-@interface Flir : NSObject <NativeFlirSpec>
-#else
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
 
-@interface Flir : NSObject <RCTBridgeModule>
-#endif
+#import "ThermalSDK.h"
 
+@interface Flir : RCTEventEmitter <RCTBridgeModule, FLIRDiscoveryEventDelegate, FLIRDataReceivedDelegate>
+    - (FLIRCamera *) getCamera;
+    - (FLIRDiscovery *) getDiscovery;
+    - (FLIRIdentity *) getDetected;
+    - (FLIRStream *) getStream;
+    - (FLIRThermalStreamer *) getThermalStream;
 @end

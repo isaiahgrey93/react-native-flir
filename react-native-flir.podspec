@@ -18,6 +18,8 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
 
+  s.vendored_frameworks = 'ios/flirsdk/libavcodec.58.dylib.xcframework', 'ios/flirsdk/libavdevice.58.dylib.xcframework', 'ios/flirsdk/libavfilter.7.dylib.xcframework', 'ios/flirsdk/libavformat.58.dylib.xcframework', 'ios/flirsdk/libavutil.56.dylib.xcframework', 'ios/flirsdk/liblive666.dylib.xcframework', 'ios/flirsdk/libswresample.3.dylib.xcframework', 'ios/flirsdk/libswscale.5.dylib.xcframework', 'ios/flirsdk/ThermalSDK.xcframework'
+  
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
     s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
